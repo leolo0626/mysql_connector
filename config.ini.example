@@ -1,0 +1,8 @@
+[MySQL]
+ssh_host = XXX.XXX.XXX.XXX
+ssh_username = XXXX
+ssh_password = XXXX
+database_username = XXXXX
+database_password = XXXXXX
+database_name = XXXXXX
+localhost = 127.0.0.1
