@@ -68,6 +68,7 @@ class MySQLConnector :
     def insert_dateframe(self, df, schema_name:str, table_name: str, pk_list : list) : 
         cursor = self.connection.cursor()
         df = df.where(pd.notnull(df), None)
+        df = df.replace({np.nan: None})
         sql_statement = f"INSERT INTO {schema_name}.{table_name} ({','.join(df.columns.tolist())}) VALUES ({', '.join(['%s'] * len(df.columns))}) ON DUPLICATE KEY UPDATE  {', '.join([f'{col} = VALUES({col})' for col in df.columns  if col not in pk_list ])}"
         print(sql_statement)
 
